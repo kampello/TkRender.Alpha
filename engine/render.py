@@ -16,28 +16,6 @@ class UIElemento:
         pass  # UIElementos não precisam de atualização, apenas posicionamento
 
 
-class Camera:
-    def __init__(self, largura_mundo, altura_mundo):
-        self.x = 0
-        self.y = 0
-        self.largura_mundo = largura_mundo
-        self.altura_mundo = altura_mundo
-        self.ui_elementos = []
-
-    def aplicar(self, objeto):
-        # Aplica a transformação de câmera apenas em objetos não UI
-        if isinstance(objeto, UIElemento):
-            return objeto.x, objeto.y  # Elementos UI não são afetados pela câmera
-        return (objeto.x - self.x, objeto.y - self.y)
-
-    def UI(self, elemento):
-        # Adiciona elementos fixos à UI
-        self.ui_elementos.append(elemento)
-
-    def aplicar_ui(self, elemento):
-        # Retorna a posição do elemento de UI sem aplicar a câmera
-        return elemento.x, elemento.y
-
 
 class Renderer:
     objetos = []
